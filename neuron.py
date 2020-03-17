@@ -29,7 +29,7 @@ nums = [num0, num1, num2, num3, num4, num5, num6, num7, num8, num9]
 
 class Neuron(object):
     def __init__(self):
-        self.weight = [round(random.random(), 4) for i in range(10)]
+        self.weight = [round(random.random(), 4) for i in range(8)]
 
     def about(self):
         print(self.weight)
@@ -44,7 +44,7 @@ class Neuron(object):
         # Превышен ли порог? (Да - сеть думает, что это 5. Нет - сеть думает, что это другая цифра)
         return net >= bias
 
-    def lerning(self, N):
+    def lerning(self, N, lerNumber):
         # Уменьшение значений весов, если сеть ошиблась и вернула 1
         def decrease(number):
             for i in range(8):
@@ -68,28 +68,28 @@ class Neuron(object):
         for i in range(N):
             option = random.randint(0, 9)
             # Если получилось НЕ число 5
-            if option != 5:
+            if option != lerNumber:
                 # Если сеть выдала True/Да/1, то наказываем ее
                 if self.work(nums[option]):
                     decrease(nums[option])
             # Если получилось число 5
             else:
                 # Если сеть выдала False/Нет/0, то показываем, что эта цифра - то, что нам нужно
-                if not self.work(num5):
-                    increase(num5)
+                if not self.work(nums[lerNumber]):
+                    increase(nums[lerNumber])
 
-
-ner = Neuron()
-ner.about()
-ner.lerning(1000)
-print("0", ner.work(num0))
-print("1", ner.work(num1))
-print("2", ner.work(num2))
-print("3", ner.work(num3))
-print("4", ner.work(num4))
-print("5", ner.work(num5))
-print("6", ner.work(num6))
-print("7", ner.work(num7))
-print("8", ner.work(num8))
-print("9", ner.work(num9))
-ner.about()
+#
+# ner = Neuron()
+# ner.about()
+# ner.lerning(1000, 5)
+# print("0", ner.work(num0))
+# print("1", ner.work(num1))
+# print("2", ner.work(num2))
+# print("3", ner.work(num3))
+# print("4", ner.work(num4))
+# print("5", ner.work(num5))
+# print("6", ner.work(num6))
+# print("7", ner.work(num7))
+# print("8", ner.work(num8))
+# print("9", ner.work(num9))
+# ner.about()
