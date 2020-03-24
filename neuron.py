@@ -46,21 +46,21 @@ class Neuron(object):
 
     def lerning(self, N, lerNumber):
         # Уменьшение значений весов, если сеть ошиблась и вернула 1
-        def decrease(number):
+        def decrease(number, weight=0.2):
             for i in range(8):
                 # Возбужденный ли вход
                 if int(number[i]) == 1:
                     # Уменьшаем связанный с ним вес на единицу
-                    self.weight[i] -= 0.1
+                    self.weight[i] -= weight
                     # print(self.weight)
 
         # Увеличение значений весов, если сеть ошиблась и выдала 0
-        def increase(number):
+        def increase(number, weight=0.2):
             for i in range(8):
                 # Возбужденный ли вход
                 if int(number[i]) == 1:
                     # Увеличиваем связанный с ним вес на единицу
-                    self.weight[i] += 0.1
+                    self.weight[i] += weight
                     # print(self.weight)
 
 
